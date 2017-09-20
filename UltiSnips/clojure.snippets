@@ -1,0 +1,88 @@
+snippet ns "(ns name & references)" b
+(ns ${0:main.core})
+endsnippet
+
+snippet def "(def symbol doc-string? init)" b
+(def ${1:symbol} ${0:init})
+endsnippet
+
+snippet defn "(defn name doc-string? attr-map? [params*] prepost-map? body)" b
+(defn ${1:fname} [${2:params}]
+	${0:exprs}))
+endsnippet
+
+snippet fn "(fn name? [params*] exprs*)" b
+(fn [${1:params}] ${0:exprs})
+endsnippet
+
+snippet let "(let bindings & body)" b
+(let [${1:bindings}]
+	${0:exprs})
+endsnippet
+
+snippet letfn "(letfn fnspecs & body)" b
+(letfn [(${1:fname} [${2:params}]
+	${3:exprs})${0}])
+endsnippet
+
+snippet if "(if test then else?)" b
+(if (${1:test-expr})
+	${2:then-expr}
+	${0:else-expr})
+endsnippet
+
+snippet if-not "(if-not test then else?)" b
+(if-not (${1:test-expr})
+	${2:then-expr}
+	${0:else-expr})
+endsnippet
+
+snippet if-let "(if-let bindings then else)" b
+(if-let [${1:symbol} ${2:test}]
+	${3:then-expr}
+	${4:else-expr})
+endsnippet
+
+snippet when "(when test & body)" b
+(when (${1:test-expr})
+	${0:then-expr})
+endsnippet
+
+snippet when-not "(when-not test & body)" b
+(when-not (${1:test-expr})
+	${0:then-expr})
+endsnippet
+
+snippet when-let "(when-let bindings & body)" b
+(when-let [${1:symbol} ${2:test}]
+	${3:then-expr}${0})
+endsnippet
+
+snippet when-some "(when-some bindings & body)" b
+(when-some [${1:symbol} ${2:test}]
+	${3:then-expr}${0})
+endsnippet
+
+snippet when-first "(when-first bindings & body)" b
+(when-first [${1:symbol} ${2:seq}]
+	${3:then-expr})
+endsnippet
+
+snippet cond "(cond & clauses)" b
+(cond
+	${1:case-expr} ${2:then-expr}
+	:else ${3:else-expr})
+endsnippet
+
+snippet condp "(condp pred expr & clauses)" b
+(condp ${1:pred} ${2:expr}
+	${3:case} ${4:then-expr}${0})
+endsnippet
+
+snippet case "(case e & clauses)" b
+(case ${1:symbol}
+	${2:case} ${4:then-expr}${0})
+endsnippet
+
+
+
