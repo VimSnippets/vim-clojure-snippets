@@ -12,7 +12,8 @@ snippet defn "(defn name doc-string? attr-map? [params*] prepost-map? body)" b
 endsnippet
 
 snippet fn "(fn name? [params*] exprs*)" b
-(fn [${1:params}] ${0:exprs})
+(fn [${1:params}]
+	${0:exprs})
 endsnippet
 
 snippet let "(let bindings & body)" b
@@ -26,13 +27,13 @@ snippet letfn "(letfn fnspecs & body)" b
 endsnippet
 
 snippet if "(if test then else?)" b
-(if (${1:test-expr})
+(if ${1:test-expr}
 	${2:then-expr}
 	${0:else-expr})
 endsnippet
 
 snippet if-not "(if-not test then else?)" b
-(if-not (${1:test-expr})
+(if-not ${1:test-expr}
 	${2:then-expr}
 	${0:else-expr})
 endsnippet
@@ -40,49 +41,80 @@ endsnippet
 snippet if-let "(if-let bindings then else)" b
 (if-let [${1:symbol} ${2:test}]
 	${3:then-expr}
-	${4:else-expr})
+	${0:else-expr})
 endsnippet
 
 snippet when "(when test & body)" b
-(when (${1:test-expr})
+(when ${1:test-expr}
 	${0:then-expr})
 endsnippet
 
 snippet when-not "(when-not test & body)" b
-(when-not (${1:test-expr})
+(when-not ${1:test-expr}
 	${0:then-expr})
 endsnippet
 
 snippet when-let "(when-let bindings & body)" b
 (when-let [${1:symbol} ${2:test}]
-	${3:then-expr}${0})
+	${0:then-expr})
 endsnippet
 
 snippet when-some "(when-some bindings & body)" b
 (when-some [${1:symbol} ${2:test}]
-	${3:then-expr}${0})
+	${0:then-expr})
 endsnippet
 
 snippet when-first "(when-first bindings & body)" b
 (when-first [${1:symbol} ${2:seq}]
-	${3:then-expr})
+	${0:then-expr})
 endsnippet
 
 snippet cond "(cond & clauses)" b
 (cond
 	${1:case-expr} ${2:then-expr}
-	:else ${3:else-expr})
+	:else ${0:else-expr})
 endsnippet
 
 snippet condp "(condp pred expr & clauses)" b
 (condp ${1:pred} ${2:expr}
-	${3:case} ${4:then-expr}${0})
+	${3:case} ${0:then-expr})
 endsnippet
 
 snippet case "(case e & clauses)" b
 (case ${1:symbol}
-	${2:case} ${4:then-expr}${0})
+	${2:case} ${0:then-expr})
 endsnippet
 
+snippet p "(print str)" b
+(print ${0:str})
+endsnippet
+
+snippet pl "(println str)" b
+(println ${0:str})
+endsnippet
+
+snippet = "(= x y & more)" w
+(= ${1:x} ${0:y})
+endsnippet
+
+snippet not "(not= x y & more)" w
+(not= ${1:x} ${0:y})
+endsnippet
+
+snippet and "(and x y & more)" w
+(and ${1:x} ${0:y})
+endsnippet
+
+snippet or "(or x y & more)" w
+(or ${1:x} ${0:y})
+endsnippet
+
+snippet obj= "(identical? x y)" w
+(identical? ${1:x} ${0:y})
+endsnippet
+
+snippet compare "(compare x y)" w
+(compare ${1:x} ${0:y})
+endsnippet
 
 
