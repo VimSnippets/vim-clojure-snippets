@@ -1,3 +1,10 @@
+priority -50
+
+########################################################################################################################
+#                                                        Basics                                                        #
+########################################################################################################################
+
+# Define {{{ #
 snippet ns "(ns name & references)" b
 (ns ${0:main.core})
 endsnippet
@@ -25,7 +32,45 @@ snippet letfn "(letfn fnspecs & body)" b
 (letfn [(${1:fname} [${2:params}]
 	${3:exprs})${0}])
 endsnippet
+# }}} Define #
 
+# Print {{{ #
+snippet p "(print str)" b
+(print ${0:str})
+endsnippet
+
+snippet pl "(println str)" b
+(println ${0:str})
+endsnippet
+# }}} Print #
+
+# Compare {{{ #
+snippet = "(= x y & more)" w
+(= ${1:x} ${0:y})
+endsnippet
+
+snippet not "(not= x y & more)" w
+(not= ${1:x} ${0:y})
+endsnippet
+
+snippet and "(and x y & more)" w
+(and ${1:x} ${0:y})
+endsnippet
+
+snippet or "(or x y & more)" w
+(or ${1:x} ${0:y})
+endsnippet
+
+snippet obj= "(identical? x y)" w
+(identical? ${1:x} ${0:y})
+endsnippet
+
+snippet compare "(compare x y)" w
+(compare ${1:x} ${0:y})
+endsnippet
+# }}} Compare #
+
+# Branch {{{ #
 snippet if "(if test then else?)" b
 (if ${1:test-expr}
 	${2:then-expr}
@@ -84,37 +129,179 @@ snippet case "(case e & clauses)" b
 (case ${1:symbol}
 	${2:case} ${0:then-expr})
 endsnippet
+# }}} Branch #
 
-snippet p "(print str)" b
-(print ${0:str})
+# Loop {{{ #
+snippet map "(map f coll*)" w
+(map
+	${1:func}
+	${0:coll})
 endsnippet
 
-snippet pl "(println str)" b
-(println ${0:str})
+snippet mapi "(map-indexed f coll*)" b
+(map-indexed
+	${1:func}
+	${0:coll})
 endsnippet
 
-snippet = "(= x y & more)" w
-(= ${1:x} ${0:y})
+snippet reduce "(reduce f val? coll*)" b
+(reduce
+	${1:func}
+	${2:val?}
+	${0:coll})
 endsnippet
 
-snippet not "(not= x y & more)" w
-(not= ${1:x} ${0:y})
+snippet for "(for seq-exprs body-expr)" b
+(for
+	${1:seq-expr}
+	${0:body-expr})
 endsnippet
 
-snippet and "(and x y & more)" w
-(and ${1:x} ${0:y})
+snippet doseq "(doseq seq-exprs & body)" b
+(doseq
+	${1:seq-exprs}
+	${0:body})
 endsnippet
 
-snippet or "(or x y & more)" w
-(or ${1:x} ${0:y})
+snippet dotimes "(dotimes bindings & body)" b
+(dotimes
+	${1:bindings}
+	${0:body})
+endsnippet
+# }}} Loop #
+
+# test {{{ #
+snippet true? "(true? x)" w
+(true? ${1:x})
 endsnippet
 
-snippet obj= "(identical? x y)" w
-(identical? ${1:x} ${0:y})
+snippet false? "(false? x)" w
+(false? ${1:x})
 endsnippet
 
-snippet compare "(compare x y)" w
-(compare ${1:x} ${0:y})
+snippet instance? "(instance? class x)" x
+(instance? ${1:class} ${0:x})
 endsnippet
 
+snippet nil? "(nil? x)" w
+(nil? ${1:x})
+endsnippet
 
+snippet some? "(some? x)" w
+(some? ${1:x})
+endsnippet
+# }}} test #
+
+########################################################################################################################
+#                                                       Numbers                                                        #
+########################################################################################################################
+
+# Arithmetic {{{ #
+snippet + "(+ x y & more)" w
+(+ ${1:x} ${0:y})
+endsnippet
+
+snippet - "(- x y & more)" w
+(- ${1:x} ${0:y})
+endsnippet
+
+snippet \ "(\ x y & more)" w
+(\ ${1:x} ${0:y})
+endsnippet
+
+snippet * "(* x y & more)" w
+(* ${1:x} ${0:y})
+endsnippet
+
+snippet quot "(quot num div)" w
+(quot ${1:num} ${0:div})
+endsnippet
+
+snippet rem "(rem num div)" w
+(rem ${1:num} ${0:div})
+endsnippet
+
+snippet inc "(inc x)" w
+(inc ${0:x})
+endsnippet
+
+snippet dec "(dec x)" w
+(dec ${0:x})
+endsnippet
+
+snippet max "(max x y & more)" w
+(max ${1:x} ${0:y})
+endsnippet
+
+snippet min "(min x y & more)" w
+(min ${1:x} ${0:y})
+endsnippet
+# }}} Arithmetic #
+
+# Compare {{{ #
+snippet == "(== x y & more)" w
+(== ${1:x} ${0:y})
+endsnippet
+
+snippet > "(> x y & more)" w
+(> ${1:x} ${0:y})
+endsnippet
+
+snippet < "(< x y & more)" w
+(< ${1:x} ${0:y})
+endsnippet
+
+snippet >= "(>= x y & more)" w
+(>= ${1:x} ${0:y})
+endsnippet
+
+snippet <= "(<= x y & more)" w
+(<= ${1:x} ${0:y})
+endsnippet
+# }}} CompareCompare #
+
+# Cast {{{ #
+snippet int "(int x)" w
+(int ${0:x})
+endsnippet
+# }}} Cast #
+
+# Test {{{ #
+snippet zero? "(zero? n)" w
+(zero? ${0:n})
+endsnippet
+
+snippet pos? "(pos? n)" w
+(pos? ${0:n})
+endsnippet
+
+snippet neg? "(neg? n)" w
+(neg? ${0:n})
+endsnippet
+
+snippet even? "(even? n)" w
+(even? ${0:n})
+endsnippet
+
+snippet odd? "(odd? n)" w
+(odd? ${0:n})
+endsnippet
+
+snippet number? "(number? n)" w
+(number? ${0:n})
+endsnippet
+
+snippet integer? "(integer? n)" w
+(integer? ${0:n})
+endsnippet
+# }}} Test #
+
+# random {{{ #
+snippet rand "(rand n?)" w
+(rand ${0:n})
+endsnippet
+
+snippet rand-int "(rand-int n)" w
+(rand-int ${0:n})
+endsnippet
+# }}} random #
