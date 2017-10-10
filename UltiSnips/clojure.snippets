@@ -18,6 +18,11 @@ snippet defn "(defn name doc-string? attr-map? [params*] prepost-map? body)" b
 	${0:exprs}))
 endsnippet
 
+snippet defn- "(defn- name doc-string? attr-map? [params*] prepost-map? body)" b
+(defn- ${1:fname} [${2:params}]
+	${0:exprs}))
+endsnippet
+
 snippet fn "(fn name? [params*] exprs*)" b
 (fn [${1:params}]
 	${0:exprs})
@@ -152,8 +157,7 @@ snippet reduce "(reduce f val? coll*)" b
 endsnippet
 
 snippet for "(for seq-exprs body-expr)" b
-(for
-	${1:seq-expr}
+(for ${1:seq-expr}
 	${0:body-expr})
 endsnippet
 
@@ -164,8 +168,7 @@ snippet doseq "(doseq seq-exprs & body)" b
 endsnippet
 
 snippet dotimes "(dotimes bindings & body)" b
-(dotimes
-	${1:bindings}
+(dotimes ${1:bindings}
 	${0:body})
 endsnippet
 # }}} Loop #
